@@ -5,6 +5,12 @@ vim.g.netrw_altv = 1 -- Open with right splitting
 vim.g.netrw_liststyle = 3 -- Tree-style view
 vim.g.netrw_winsize = 30 -- Window size
 
+
+-- disable providers
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+
+
 -- options repo: https://github.com/LunarVim/Neovim-from-scratch
 local options = {
   backup = false,                          -- creates a backup file
@@ -34,14 +40,13 @@ local options = {
   tabstop = 2,                             -- insert 2 spaces for a tab
   cursorline = true,                       -- highlight the current line
   number = true,                           -- set numbered lines
-  relativenumber = false,                  -- set relative numbered lines
+  relativenumber = true,                   -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
-  relativenumber = true                    -- use relative line numbers
 }
 
 vim.opt.shortmess:append "c"
