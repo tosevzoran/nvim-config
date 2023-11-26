@@ -42,30 +42,41 @@ keymap("n", "<leader>e", ":Lex! %:p:h<cr>", opts)
 
 keymap("n", "<leader>sv", ":luafile %<CR>", opts)
 
+-- move text in normal mode
+keymap("n", "<A-j>", ":m .+1<CR>==", opts)
+keymap("n", "<A-k>", ":m .-2<CR>==",opts)
+
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Telescope
+keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
+-- keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<C-t>", "<cmd>Telescope live_grep<cr>", opts)
+
 -- Insert --
--- Press jk fast to enter
-keymap("i", "<Caps lock>", "<ESC>", opts)
+keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Move text up and downkeymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+-- Move text up and down
+keymap("v", "<A-j>", ":m .+1<CR>gv=gv", opts)
+keymap("v", "<A-k>", ":m .-2<CR>gv=gv", opts)
+-- keep the pasted text in buffer
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":m+1<CR>", opts)
+keymap("x", "<A-j>", "m+1<CR>", opts)
+keymap("x", "<A-k>", "m-2<CR>", opts)
 
 -- Terminal --
 -- Better terminal navigation
