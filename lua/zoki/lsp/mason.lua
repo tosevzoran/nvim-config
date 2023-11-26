@@ -2,6 +2,15 @@ local servers = {
   "tsserver",
   "lua_ls",
 	"jsonls",
+  "cssmodules_ls",
+  "cssls",
+  "dockerls",
+  "docker_compose_language_service",
+  "eslint",
+  "gopls",
+  "html",
+  "tailwindcss",
+  "terraformls"
 }
 
 local settings = {
