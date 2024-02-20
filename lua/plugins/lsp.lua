@@ -103,9 +103,18 @@ return {
 				lspconfig[lsp_setting.name].setup({
 					capabilities = capabilities,
 					settings = lsp_setting.settings,
+					on_attach = function(config, buffer)
+						if lsp_setting.on_attach then
+							lsp_setting.on_attach(config, buffer)
+						end
+					end,
 				})
 			end
 
+			vim.keymap.set("n", "<leader>[", vim.diagnostic.open_float, {})
+			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {})
+			vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, {})
+			-- TODO: move to LspAttach?
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
