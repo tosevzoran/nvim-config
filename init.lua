@@ -16,6 +16,20 @@ vim.cmd("set nowritebackup")
 vim.wo.relativenumber = true
 vim.wo.number = true
 
+vim.opt.cursorline = true
+
+-- Don't show the mode, since it's already in status line
+vim.opt.showmode = false
+
+-- Highlight yanking
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
 local opts = { noremap = true, silent = true }
 
 -- Navigate vim panes better
