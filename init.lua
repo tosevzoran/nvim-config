@@ -1,3 +1,8 @@
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = { "Fastfile", "Appfile", "Matchfile", "Pluginfile" },
+	command = "set filetype=ruby",
+})
+
 vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "12.7.1")
 
 vim.g.mapleader = " "
@@ -6,6 +11,7 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
+vim.cmd("set nowritebackup")
 
 vim.wo.relativenumber = true
 vim.wo.number = true
