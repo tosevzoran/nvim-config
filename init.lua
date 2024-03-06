@@ -17,7 +17,6 @@ vim.wo.relativenumber = true
 vim.wo.number = true
 
 vim.opt.cursorline = true
-
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
 
@@ -31,6 +30,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 local opts = { noremap = true, silent = true }
+
+-- close buffers
+vim.keymap.set("n", "<leader>x", ":bd<CR>")
+-- save change
+vim.keymap.set("n", "<leader>w", ":w<CR>")
 
 -- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
