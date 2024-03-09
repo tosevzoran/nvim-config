@@ -13,6 +13,11 @@ vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set nowritebackup")
 
+-- setup treesitter folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false
+
 vim.wo.relativenumber = true
 vim.wo.number = true
 
@@ -47,6 +52,32 @@ vim.keymap.set("n", "<s-h>", ":bnext<cr>", opts)
 vim.keymap.set("n", "<s-l>", ":bprevious<cr>", opts)
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+
+-- Resize with arrows
+vim.keymap.set("n", "<s-Up>", ":resize -2<CR>", opts)
+vim.keymap.set("n", "<s-Down>", ":resize +2<CR>", opts)
+vim.keymap.set("n", "<s-Left>", ":vertical resize -2<CR>", opts)
+vim.keymap.set("n", "<s-Right>", ":vertical resize +2<CR>", opts)
+
+-- Move text up and down (alt mapping is not working)
+-- vim.keymap.set("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+-- vim.keymap.set("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+
+-- Visual --
+-- Stay in indent mode
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
+
+-- Move text up and down (alt mapping is not working)
+-- vim.keymap.set("v", "<A-j>", ":m .+1<CR>gv=gv", opts)
+-- vim.keymap.set("v", "<A-k>", ":m .-2<CR>gv=gv", opts)
+
+-- keep the pasted text in buffer
+vim.keymap.set("v", "p", '"_dP', opts)
+
+-- Insert (alt mapping is not working)
+-- vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
+-- vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
