@@ -44,4 +44,10 @@ return {
 		lazy = true,
 		event = "VeryLazy",
 	},
+	{
+		"ziontee113/syntax-tree-surfer",
+		config = function()
+			local sts = require("syntax-tree-surfer")
+		end,
+	},
 }
