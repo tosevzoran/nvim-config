@@ -31,7 +31,7 @@ return {
 		--        },
 		--    })
 
-		vim.keymap.set("n", "<leader>e", ":Neotree toggle right reveal<CR>", { desc = "Toggle explorer" })
-		vim.keymap.set("n", "<leader>g", ":Neotree float git_status<CR>", { desc = "Toggle git status window" })
+		vim.keymap.set("n", "<leader>e", ":Neotree toggle right<CR>", { desc = "Toggle explorer" })
+		-- vim.keymap.set("n", "<leader>g", ":Neotree float git_status<CR>", { desc = "Toggle git status window" })
 	end,
 }
