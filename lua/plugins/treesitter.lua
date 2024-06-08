@@ -19,7 +19,7 @@ return {
 							smart_rename = "grr",
 						},
 					},
-					highlight_current_scope = { enable = true },
+					-- highlight_current_scope = { enable = true },
 				},
 			})
 		end,

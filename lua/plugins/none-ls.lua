@@ -13,6 +13,7 @@ return {
 		mason_null_ls.setup({
 			ensure_installed = {
 				"prettierd", -- prettier formatter
+				"gopls", -- golang formatter
 				"stylua", -- lua formatter
 				"eslint_d", -- js linter
 			},
