@@ -23,6 +23,7 @@ return { -- Autocompletion
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 
+		"onsails/lspkind.nvim",
 		-- If you want to add a bunch of pre-configured snippets,
 		--    you can use this plugin to help you. It even has snippets
 		--    for various frameworks/libraries/etc. but you will have to
@@ -43,6 +44,23 @@ return { -- Autocompletion
 			},
 			completion = { completeopt = "menu,menuone,noinsert" },
 
+			formatting = {
+				fields = { "menu", "abbr", "kind" },
+				format = function(entry, item)
+					item.kind = require("lspkind").presets.default[item.kind] .. " " .. item.kind
+					-- set a name for each source
+					item.menu = ({
+						buffer = "[Buffer]",
+						nvim_lsp = "[LSP]",
+						nvim_lua = "[Lua]",
+						cmp_tabnine = "[TabNine]",
+						look = "[Look]",
+						path = "[Path]",
+					})[entry.source.name]
+
+					return item
+				end,
+			},
 			-- For an understanding of why these mappings were
 			-- chosen, you will need to read `:help ins-completion`
 			--
@@ -81,12 +99,43 @@ return { -- Autocompletion
 						luasnip.jump(-1)
 					end
 				end, { "i", "s" }),
+				-- confirm with enter
+				["<CR>"] = function(fallback)
+					if cmp.visible() then
+						cmp.confirm()
+					else
+						fallback() -- If you use vim-endwise, this fallback will behave the same as vim-endwise.
+					end
+				end,
+				-- move to next with tab
+				["<Tab>"] = function(fallback)
+					if cmp.visible() then
+						cmp.select_next_item()
+					else
+						fallback()
+					end
+				end,
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					else
+						fallback()
+					end
+				end),
 			}),
-			sources = {
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-				{ name = "path" },
-			},
+			sources = cmp.config.sources({
+				{
+					name = "nvim_lsp",
+					priority = 80,
+					entry_filter = function(entry)
+						return require("cmp").lsp.CompletionItemKind.Text ~= entry:get_kind()
+					end,
+				},
+				{ name = "luasnip", priority = 70 },
+				{ name = "path", priority = 50 },
+			}, {
+				{ name = "buffer" },
+			}),
 		})
 	end,
 }
