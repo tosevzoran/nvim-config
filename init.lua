@@ -37,7 +37,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 local opts = { noremap = true, silent = true }
 
 -- close buffers
-vim.keymap.set("n", "<leader>x", ":bd<CR>")
+-- vim.keymap.set("n", "<leader>x", ":bd<CR>")
+vim.keymap.set("n", "<leader>x", ":bp<Bar>sp<Bar>bn<Bar>bd<CR>")
 -- save change
 vim.keymap.set("n", "<leader>w", ":w<CR>")
 
