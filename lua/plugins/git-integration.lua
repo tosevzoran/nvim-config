@@ -61,12 +61,6 @@ return {
 				desc = "Go to prev hunk",
 			})
 
-			vim.keymap.set("n", "<leader>g]", ":Gitsigns prev_hunk<CR>", {
-				silent = true,
-				noremap = true,
-				desc = "Go to prev hunk",
-			})
-
 			vim.keymap.set("n", "<leader>tb", ":Gitsigns toggle_current_line_blame<CR>", {
 				silent = true,
 				noremap = true,
