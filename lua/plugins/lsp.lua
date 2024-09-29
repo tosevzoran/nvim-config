@@ -260,8 +260,8 @@ return { -- LSP Configuration & Plugins
 		local servers = {
 			html = {},
 			gopls = {},
-			tsserver = {},
 			cssls = {},
+      ts_ls = {},
 
 			lua_ls = {
 				-- cmd = {...},
