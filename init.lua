@@ -1,6 +1,6 @@
 vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = { "Fastfile", "Appfile", "Matchfile", "Pluginfile" },
-	command = "set filetype=ruby",
+  pattern = { "Fastfile", "Appfile", "Matchfile", "Pluginfile" },
+  command = "set filetype=ruby",
 })
 
 vim.fn.setenv("MACOSX_DEPLOYMENT_TARGET", "12.7.1")
@@ -27,11 +27,11 @@ vim.opt.showmode = false
 
 -- Highlight yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copying) text",
-	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 local opts = { noremap = true, silent = true }
@@ -82,14 +82,14 @@ vim.keymap.set("v", "p", '"_dP', opts)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
