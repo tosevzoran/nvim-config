@@ -33,6 +33,12 @@ return {
         desc = "[D]iff[V]iew close",
       })
 
+      vim.keymap.set("n", "<leader>dh", ":DiffviewFileHistory<cr>", {
+        silent = true,
+        noremap = true,
+        desc = "[D]iff[V]iew close",
+      })
+
       vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<cr>", {
         silent = true,
         noremap = true,

@@ -43,7 +43,7 @@ return {
 
     vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
     vim.keymap.set("n", "<leader>p", builtin.find_files, { desc = "Find files" })
-    vim.keymap.set("n", "<leader>f", builtin.live_grep, { desc = "Live grep" })
+    vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Live grep" })
 
     vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
     vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
@@ -55,6 +55,7 @@ return {
     vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
     vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
     vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+    vim.keymap.set("n", "<leader>ft", ":TodoTelescope<CR>", { desc = "[F]ind [T]odos" })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set("n", "<leader>/", function()
