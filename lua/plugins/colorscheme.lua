@@ -13,6 +13,18 @@ return {
   name = "catppucin",
   priority = 1000,
   config = function()
+    require("catppuccin").setup({
+      integrations = {
+        gitsigns = true,
+        hop = true,
+        cmp = true,
+        telescope = true,
+        neogit = true,
+        nvimtree = true,
+        treesitter = true,
+        diffview = true,
+      },
+    })
     vim.cmd([[colorscheme catppuccin-frappe]])
   end,
 }
