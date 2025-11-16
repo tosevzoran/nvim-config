@@ -78,6 +78,12 @@ return {
         noremap = true,
         desc = "[T]oggle [S]igns",
       })
+
+      vim.keymap.set("n", "<leader>ga", ":Gitsigns stage_hunk<CR>", {
+        silent = true,
+        noremap = true,
+        desc = "[G]itsigns [a]dd hunk",
+      })
     end,
   },
 }

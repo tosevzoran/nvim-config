@@ -15,6 +15,7 @@ return {
         go = { "goimports", "gofmt" },
         -- svelte = { "prettier" },
         css = { "prettierd" },
+        scss = { "prettierd" },
         html = { "prettierd" },
         json = { "prettierd" },
         yaml = { "prettierd" },
@@ -23,10 +24,10 @@ return {
         -- liquid = { "prettier" },
         lua = { "stylua" },
       },
-      format_on_save = {
+      format_after_save = {
         lsp_fallback = true,
-        async = false,
-        timeout_ms = 600,
+        async = true,
+        timeout_ms = 800,
       },
     })
 

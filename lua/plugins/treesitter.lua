@@ -47,9 +47,14 @@ return {
     event = "VeryLazy",
   },
   {
-    "ziontee113/syntax-tree-surfer",
-    config = function()
-      local sts = require("syntax-tree-surfer")
-    end,
+
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    lazy = true,
+    config = function() end,
+  },
+  {
+    "nvim-treesitter/playground",
+    lazy = true,
+    event = "VeryLazy",
   },
 }

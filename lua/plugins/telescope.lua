@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.5",
+  tag = "0.1.8",
   dependencies = {
     "nvim-lua/plenary.nvim",
     { -- If encountering errors, see telescope-fzf-native README for install instructions
@@ -25,8 +25,24 @@ return {
     require("telescope").setup({
       pickers = {
         find_files = {
-          hidden = false,
-          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+          hidden = true,
+          find_command = {
+            "rg",
+            "--files",
+            "--hidden",
+            "--glob",
+            "!**/.git/*",
+          },
+        },
+        live_grep = {
+          hidden = true,
+          additional_args = function(opts)
+            return {
+              "--hidden",
+              "--glob",
+              "!**/.git/*",
+            }
+          end,
         },
       },
       extensions = {
@@ -42,7 +58,7 @@ return {
     local builtin = require("telescope.builtin")
 
     vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
-    vim.keymap.set("n", "<leader>p", builtin.find_files, { desc = "Find files" })
+    vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "Find files" })
     vim.keymap.set("n", "<leader>ff", builtin.live_grep, { desc = "Live grep" })
 
     vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })

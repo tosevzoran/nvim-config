@@ -28,9 +28,7 @@ return {
           --            },
           never_show = { ".git" },
         },
-        use_libuv_file_watcher = {
-          enabled = true,
-        },
+        use_libuv_file_watcher = true,
         follow_current_file = {
           enabled = true,
         },

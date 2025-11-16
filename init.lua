@@ -12,6 +12,11 @@ vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
 vim.cmd("set nowritebackup")
+vim.cmd("set ignorecase")
+vim.cmd("set smartcase")
+
+vim.g.copilot_no_tab_map = true
+vim.keymap.set("i", "<S-Tab>", 'copilot#Accept("\\<S-Tab>")', { expr = true, replace_keycodes = false })
 
 -- setup treesitter folding
 vim.opt.foldmethod = "expr"
@@ -24,6 +29,12 @@ vim.wo.number = true
 vim.opt.cursorline = true
 -- Don't show the mode, since it's already in status line
 vim.opt.showmode = false
+vim.opt.splitright = true
+
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.env.*",
+  command = "set filetype=sh",
+})
 
 -- Highlight yanking
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -79,6 +90,11 @@ vim.keymap.set("v", "p", '"_dP', opts)
 -- Insert (alt mapping is not working)
 -- vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 -- vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+
+vim.keymap.set("v", "<leader>y", '"*y', opts)
+vim.keymap.set("v", "<leader>Y", '"*yy', opts)
+
+vim.keymap.set("n", "<leader>p", '"*p', opts)
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
