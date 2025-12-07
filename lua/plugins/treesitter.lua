@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       local config = require("nvim-treesitter.configs")
       config.setup({
@@ -45,12 +46,6 @@ return {
     "nvim-treesitter/nvim-treesitter-refactor",
     lazy = true,
     event = "VeryLazy",
-  },
-  {
-
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    lazy = true,
-    config = function() end,
   },
   {
     "nvim-treesitter/playground",
