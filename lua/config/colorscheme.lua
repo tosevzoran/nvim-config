@@ -16,7 +16,7 @@ require('catppuccin').setup({
   },
   dim_inactive = {
     enabled = true,
-    shade = "dark",
+    shade = "light",
     percentage = 0.15,
   }
 })
