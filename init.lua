@@ -21,8 +21,8 @@ vim.diagnostic.config({
 })
 
 
-require("config.keymaps")
 require("config.colorscheme")
-require("plugins.neotree")
+require("plugins")
+require("config.keymaps")
 
 vim.lsp.enable({"lua_ls"})
